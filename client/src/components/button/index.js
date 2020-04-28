@@ -1,19 +1,22 @@
-import React from "react";
+import React, { Children } from "react";
 
-// import "./style.css";
+ import "./style.css";
 // import API from "../../utils/API";
 
 
 export function Input(props) {
     return (
+        
         <input className="form-control" {...props} />
-    );
+         /* <button {...props} className ="btn btn-success">Submit</button> */
+          
+);
 }
 
-export function Btn(props) {
+export function Btn(props, children) {
     return (
         <button {...props} className="btn btn-success filterbtn">
-            Submit
+            {children}
         </button>
     );
 }
