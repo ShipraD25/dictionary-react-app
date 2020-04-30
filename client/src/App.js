@@ -25,7 +25,7 @@ handleSearch = event => {
   API.getWord(this.state.wordSearch)
   .then(res =>
     //console.log(res.data.items)
-    this.setState({wordsArray: res.data})
+    this.setState({wordsArray: [res.data]})
   ).catch(err => console.log(err));
   
 }; 
