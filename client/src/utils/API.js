@@ -8,7 +8,7 @@ export default {
     getWord : function(query) {
       return axios.get("/api/words/" + query)
     },
-    getWordWithLetter : function(event) {
-      return axios.get("/api/letters/:letter")
+    getWordWithLetter : function(query) {
+      return axios.get("/api/letters/" + query)
     }
 }
