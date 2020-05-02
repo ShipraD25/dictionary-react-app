@@ -8,28 +8,26 @@ import API from "./utils/API";
 class App extends Component {
   state = {
     wordsArray: [],
-    wordSearch:""
-}
+    wordSearch: ""
+  }
 
-handleInputChange = event => {
-      
-  const { name, value } = event.target;
-  this.setState({
-    [name] : value
-  });
-};
+  handleInputChange = event => {
 
-handleSearch = event => {
-  event.preventDefault();
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-  API.getWord(this.state.wordSearch)
-  .then(res =>
-    //console.log(res.data.items)
-    this.setState({wordsArray: [res.data]})
-  ).catch(err => console.log(err));
-  
-}; 
- 
+  handleSearch = event => {
+
+    API.getWord(this.state.wordSearch)
+      .then(res =>
+        this.setState({ wordsArray: res.data })
+      ).catch(err => console.log(err));
+
+  };
+
 
   handleClick = event => {
     API.getAllWords(event).then(res => {
@@ -44,24 +42,25 @@ handleSearch = event => {
     return (
       <div className="container">
         <Btn onClick={this.handleClick}>
-          View All Words</Btn>
-        
+          View All Words
+        </Btn>
+
         <div className="row">
           {this.state.wordsArray.map(word => {
             return (
               <Resultcard
-                key= {word.id}
+                key={word.id}
                 word={word.word}
                 meaning={word.meaning}
               />)
           })}
         </div>
         <br />
-        <Input 
-        name="wordSearch"
-        value={this.state.wordSearch}
-        onChange={this.handleInputChange}
-        placeholder="Search For a Word"/>
+        <Input
+          name="wordSearch"
+          value={this.state.wordSearch}
+          onChange={this.handleInputChange}
+          placeholder="Search For a Word" />
         <Btn onClick={this.handleSearch}>Search</Btn>
       </div>
     )
