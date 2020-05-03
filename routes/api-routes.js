@@ -18,7 +18,7 @@ module.exports = function(app) {
         word : req.params.word
       }
     }).then(function(result) {
-      res.json(result.meaning)
+      res.json(result)
     });
   });
 
